@@ -1,0 +1,4 @@
+mysql-connector-python==8.0.26
+protobuf==3.18.0
+regex==2021.8.28
+sockets==1.0.0
