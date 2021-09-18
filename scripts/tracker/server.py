@@ -3,6 +3,10 @@ from scripts.tracker.filter_data import *
 
 
 def run_tracker():
+    """
+                    ---------------------------------
+                    running function for the tracker
+    """
     s = socket.socket()
     print('Socket Created')
     s.bind(('10.1.4.54', 5000))

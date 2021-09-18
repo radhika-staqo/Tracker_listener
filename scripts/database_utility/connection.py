@@ -3,7 +3,7 @@ import pymysql
 
 class MysqlConnect:
     """
-        ------------------------------
+        ----------------------------------------
         Class performs tasks on My SQL Database.
     """
     def __init__(self, db_creds, batch_size=50):
@@ -17,7 +17,7 @@ class MysqlConnect:
 
     def connect(self):
         """
-            ------------------------------
+            --------------------------------------
             Establish connection between database.
         """
         try:
@@ -34,14 +34,14 @@ class MysqlConnect:
 
     def cursor(self):
         """
-            ------------------------------
+            ---------------
             Returns cursor.
         """
         return self.conn.cursor()
 
     def close(self):
         """
-            ------------------------------
+            ----------------------
             Closes the connection.
         """
         self.conn.close()
@@ -49,7 +49,7 @@ class MysqlConnect:
 
     def execute_query(self, query):
         """
-            ------------------------------
+            ----------------------------------------------
             Executes the query and returns the table data.
         """
         try:
@@ -64,7 +64,7 @@ class MysqlConnect:
 
     def execute_insert(self, query):
         """
-            ------------------------------
+            ---------------------------------------------------------
             Insert the values by executing  insert and committing it.
         """
         try:

@@ -5,6 +5,10 @@ from scripts.database_utility.queries import *
 
 
 def get_db_creds():
+    """
+                ----------------------------------------
+                get credentials for database from dotenv
+    """
     load_dotenv(find_dotenv())
     db_creds = {
         "username": os.getenv("user"),
@@ -17,6 +21,10 @@ def get_db_creds():
 
 
 def insert_tracker_data(data):
+    """
+                 -------------------------------------------------
+                 inserts the incoming data into the database table
+    """
     db_creds = get_db_creds()
     sql_object = MysqlConnect(db_creds)
     db_connection = sql_object.connect()
@@ -30,6 +38,10 @@ def insert_tracker_data(data):
 
 
 def insert_tracker_filtered_data(tracker_data, tracker_dict):
+    """
+                     -------------------------------------------------------------------------
+                     inserts the filtered data from tracker dictionary into the database table
+    """
     db_creds = get_db_creds()
     sql_object = MysqlConnect(db_creds)
     db_connection = sql_object.connect()
@@ -44,6 +56,10 @@ def insert_tracker_filtered_data(tracker_data, tracker_dict):
 
 
 def get_tracker_unfiltered_data():
+    """
+                    --------------------------------------------------
+                    insers the unfiltered data into the database table
+    """
     db_creds = get_db_creds()
     sql_object = MysqlConnect(db_creds)
     db_connection = sql_object.connect()

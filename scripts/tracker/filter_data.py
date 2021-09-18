@@ -4,6 +4,10 @@ from scripts.database_utility.db_query import insert_tracker_filtered_data
 
 
 def filter_tracker_data(tracker_data):
+    """
+                    --------------------------------------------
+                    extract the data from the message receieved
+    """
     text = tracker_data.get("tracker_data")
     if "CMD-X" not in text:
         date = re.findall("DATE:\s*([\w-]+)", text)[0]
@@ -26,6 +30,10 @@ def filter_tracker_data(tracker_data):
 
 
 def imei(n):
+    """
+                    --------------------------------
+                    validates the device imei number
+    """
     if (len(n) == 15):
         return True
     else:
@@ -33,6 +41,10 @@ def imei(n):
 
 
 def get_data(msg_packet_2, address):
+    """
+                    ------------------------------------------
+                    gets the incoming message data separately
+    """
     try:
         find_all_number = re.findall('[0-9]+', msg_packet_2)
         finalx = list(filter(imei, find_all_number))
