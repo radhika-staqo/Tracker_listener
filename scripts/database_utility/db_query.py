@@ -27,3 +27,27 @@ def insert_tracker_data(data):
     else:
         print("Something went wrong !!!")
     db_connection.close()
+
+
+def insert_tracker_filtered_data(tracker_data, tracker_dict):
+    db_creds = get_db_creds()
+    sql_object = MysqlConnect(db_creds)
+    db_connection = sql_object.connect()
+    query = get_tracker_filter_data_insert_query(tracker_dict)
+    status = sql_object.execute_insert(query)
+    if status:
+        update_query = get_parsed_update_query(tracker_data.get("id"))
+        sql_object.execute_insert(update_query)
+    else:
+        print("Something went wrong !!!")
+    db_connection.close()
+
+
+def get_tracker_unfiltered_data():
+    db_creds = get_db_creds()
+    sql_object = MysqlConnect(db_creds)
+    db_connection = sql_object.connect()
+    query = get_tracker_unfilter_data_insert_query()
+    data = sql_object.execute_query(query)
+    db_connection.close()
+    return data

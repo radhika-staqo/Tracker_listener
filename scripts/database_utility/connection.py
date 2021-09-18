@@ -1,12 +1,4 @@
-import os
 import pymysql
-from dotenv import load_dotenv, find_dotenv
-# db =
-# cursor = db.cursor()
-# query = ("SHOW DATABASES")
-# cursor.execute(query)
-# for r in cursor:
-#     print(r)
 
 
 class MysqlConnect:

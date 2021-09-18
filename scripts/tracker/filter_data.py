@@ -1,5 +1,28 @@
-import re
 from scripts.database_utility.db_query import *
+import re
+from scripts.database_utility.db_query import insert_tracker_filtered_data
+
+
+def filter_tracker_data(tracker_data):
+    text = tracker_data.get("tracker_data")
+    if "CMD-X" not in text:
+        date = re.findall("DATE:\s*([\w-]+)", text)[0]
+        time = re.findall("TIME:\s*([\w-]+)", text)[0]
+        lat = re.findall("LAT:\s*([^\n,]+)", text)[0]
+        lot = re.findall("LOT:\s*([^\n,]+)", text)[0]
+        speed = re.findall("Speed:\s*([^\n,]+)", text)[0]
+        tracker_dict = {
+            'Device_imei_no': tracker_data.get("imei"),
+            'Date': date,
+            'Time': time,
+            'Latitude': lat,
+            'Longitude': lot,
+            'Speed': speed
+            }
+        print(tracker_dict)
+        insert_tracker_filtered_data(tracker_data, tracker_dict)
+    else:
+        print(text)
 
 
 def imei(n):

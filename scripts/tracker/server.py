@@ -25,19 +25,3 @@ def run_tracker():
 
         except Exception as e:
             print(str(e))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
