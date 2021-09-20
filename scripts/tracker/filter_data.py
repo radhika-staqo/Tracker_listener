@@ -6,7 +6,9 @@ from scripts.database_utility.db_query import insert_tracker_filtered_data
 
 
 def post_data(tracker_data):
-    data = {'device_imei_no': tracker_data.get("imei"), 'data': tracker_data.get("tracker_data")}
+    data = {'device_imei_no': tracker_data.get("imei"),
+            'data': tracker_data.get("tracker_data"),
+            'ip_address': tracker_data.get("ip_address")}
     data = json.dumps(data, indent=4)
     # print(type(data))
     # print(data)
