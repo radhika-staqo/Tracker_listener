@@ -1,4 +1,1 @@
-
-
-
-python C:/Users/Administrator/Desktop/Tracker_listener/cron.py
+C:/Users/Administrator/Desktop/Tracker_listener/venv/scripts/python C:/Users/Administrator/Desktop/Tracker_listener/cron.py
