@@ -10,3 +10,7 @@ def dump_filter_tracker_date():
 
 def run():
     dump_filter_tracker_date()
+
+
+if __name__ == "__main__":
+    run()
