@@ -8,10 +8,10 @@ from scripts.database_utility.db_query import insert_tracker_filtered_data
 def post_data(tracker_data):
     data = {'device_imei_no': tracker_data.get("imei"), 'data': tracker_data.get("tracker_data")}
     data = json.dumps(data, indent=4)
-    print(type(data))
-    print(data)
+    # print(type(data))
+    # print(data)
     response = requests.post(url='http://34.234.229.50/api/user-tracking-logs', data=data)
-    print(response.json)
+    # print(response.json)
     return response
 
 
