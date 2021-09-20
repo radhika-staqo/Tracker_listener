@@ -1,6 +1,18 @@
 from scripts.database_utility.db_query import *
+import requests
+import json
 import re
 from scripts.database_utility.db_query import insert_tracker_filtered_data
+
+
+def post_data(tracker_data):
+    data = {'device_imei_no': tracker_data.get("imei"), 'data': tracker_data.get("tracker_data")}
+    data = json.dumps(data, indent=4)
+    print(type(data))
+    print(data)
+    response = requests.post(url='http://34.234.229.50/api/user-tracking-logs', data=data)
+    print(response.json)
+    return response
 
 
 def filter_tracker_data(tracker_data):
@@ -8,25 +20,8 @@ def filter_tracker_data(tracker_data):
                     --------------------------------------------
                     extract the data from the message receieved
     """
-    text = tracker_data.get("tracker_data")
-    if "CMD-X" not in text:
-        date = re.findall("DATE:\s*([\w-]+)", text)[0]
-        time = re.findall("TIME:\s*([\w-]+)", text)[0]
-        lat = re.findall("LAT:\s*([^\n,]+)", text)[0]
-        lot = re.findall("LOT:\s*([^\n,]+)", text)[0]
-        speed = re.findall("Speed:\s*([^\n,]+)", text)[0]
-        tracker_dict = {
-            'Device_imei_no': tracker_data.get("imei"),
-            'Date': date,
-            'Time': time,
-            'Latitude': lat,
-            'Longitude': lot,
-            'Speed': speed
-            }
-        print(tracker_dict)
-        insert_tracker_filtered_data(tracker_data, tracker_dict)
-    else:
-        print(text)
+    status = post_data(tracker_data)
+    insert_tracker_filtered_data(tracker_data, status)
 
 
 def imei(n):

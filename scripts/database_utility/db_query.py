@@ -37,16 +37,17 @@ def insert_tracker_data(data):
     db_connection.close()
 
 
-def insert_tracker_filtered_data(tracker_data, tracker_dict):
+def insert_tracker_filtered_data(tracker_data, status):
     """
                      -------------------------------------------------------------------------
                      inserts the filtered data from tracker dictionary into the database table
     """
+
     db_creds = get_db_creds()
     sql_object = MysqlConnect(db_creds)
     db_connection = sql_object.connect()
-    query = get_tracker_filter_data_insert_query(tracker_dict)
-    status = sql_object.execute_insert(query)
+    # query = get_tracker_filter_data_insert_query(tracker_dict)
+    # status = sql_object.execute_insert(query)
     if status:
         update_query = get_parsed_update_query(tracker_data.get("id"))
         sql_object.execute_insert(update_query)
