@@ -10,5 +10,3 @@ def dump_filter_tracker_date():
 
 def run():
     dump_filter_tracker_date()
-
-run()
