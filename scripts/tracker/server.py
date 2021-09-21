@@ -21,6 +21,7 @@ def run_tracker():
                 print("Message 1st Package: ", msg_packet)
                 msg_packet_2 = connection.recv(2048).decode()
                 print("Message 2nd Package: ", msg_packet_2)
+                msg_packet_2 = msg_packet_2.replace('"', '\\"')
                 get_data(msg_packet_2, address)
 
             except Exception as e:
